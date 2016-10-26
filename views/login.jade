@@ -1,0 +1,24 @@
+extends layout
+
+block head
+	- var active = 'login'
+
+block content
+
+	.col-sm-offset-4.col-sm-4
+
+		h1 Autenticate
+
+		form(method='POST', action='/user/auth')
+			.form-group
+				label(for='inputUser') Usuario
+				input#inputUser.form-control(type="text", placeholder="Introduzca su usuario", name="user")
+			.form-group
+				label(for='inputUser') Contraseña
+				input#inputUser.form-control(type="password", placeholder="Introduzca la contraseña", name="password")
+			| ¿No tienes una cuenta? Registrate haciendo 
+			a(href='/user/register') click aquí.
+
+			br/
+			br/
+			button.btn.btn-lg.btn-default(type="submit") Iniciar sesión

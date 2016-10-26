@@ -1,0 +1,28 @@
+extends layout
+
+block head
+	- var active = 'login'
+
+block content
+	h1 Registrate
+
+	form(method='POST', action='/user/register')
+		.form-group
+			label(for='inputUser') Usuario:
+			input#inputUser.form-control(type="text", placeholder="Introduzca su usuario", name="username")
+		.form-group
+			label(for='inputPassword') Contraseña:
+			input#inputUser.form-control(type="password", placeholder="Introduzca la contraseña", name="password")
+		.form-group
+			label(for='inputPassword2') Repita la contraseña:
+			input#inputUser.form-control(type="password", placeholder="Repita la misma contraseña", name="password2")
+		.form-group
+			label(for='inputEmail') Email:
+			input#inputEmail.form-control(type="email", name="email")
+		br/
+		if validationErrors
+			ul
+				each error in validationErrors
+					li #{error}
+		br/
+		button.btn.btn-lg.btn-default(type="submit") Registrar

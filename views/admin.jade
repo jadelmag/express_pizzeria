@@ -1,0 +1,39 @@
+extends layout
+
+block head
+	- var active = 'admin'
+	- var user = orders[0]
+
+block content
+	
+	h1 Administra pedidos
+
+	.row
+		.col-lg-12
+			table.table.table-striped
+				thead
+					tr
+						th Usuario
+						th Fecha
+						th Estado del pedido
+						th Pizza
+						th Aviso por email
+						th Cambiar estado del pedido
+				tbody
+					each order in orders
+						tr
+							td #{order.customer.username}
+							td #{order.order_date}
+							td #{order.state}
+							td #{order.pizza}
+							td 
+								if (order.email_on_ready == false)
+									| No
+								else
+									| Sí
+							td
+								a.btn.btn-default(href='/admin/order/#{order._id}/pending') Pending
+								|  
+								a.btn.btn-info(href='/admin/order/#{order._id}/cooking') Cooking
+								|  
+								a.btn.btn-success(href='/admin/order/#{order._id}/ready') Ready
